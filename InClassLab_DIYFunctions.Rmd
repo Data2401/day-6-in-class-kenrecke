@@ -16,44 +16,41 @@ The questions from your notes today are below, please copy your answers them her
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
 ```{R}
-calculate_c <- function(fahrenheit){
-  return(fahrenheit - 32) * (5/9)
+convert_cel <- function(fahrenheit_temp) {
+  return((fahrenheit_temp - 32) * (5/9))
 }
-calculate_c(212)
+convert_cel(212)
+
 ```
 
 2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
 
 
-```{r}
-convert <- function(fahrenheit, feet) {
-    calc <- (fahrenheit - 32) * (5/9)
-    meter <- (feet * 0.3048)
-    return(c(calc, meter))
-  
-}
-convert1 <- function(fahrenheit, feet) {
-  calc = calculate_c(fahrenheit)
-  meter = calculate_m(feet)
-    return(c(calc, meter))
-}
-convert1(12, 5)
-```
+# ```{r}
+# convert_cel_and_meters <- function(fahrenheit, feet) {
+#   celcius <- convert_cel(fahrenheit)
+#   meters <- convert_meters(feet)
+#   return(c(celcius, meters))
+# }
+# 
+# convert_cel_and_meters(212, 15)
+# ```
 
 
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
 ```{R}
-check_number <- function(num){
-  if (num > 0){
-    print("positive")
-  } else if ( num < 0){
+number_check <- function(num) {
+  if (num < 0) {
     print("negative")
-  } else { 
-    print("number is 0")
-    }
+  } else if(num == 0) {
+    print("zero")
+  } else {
+    print("positive")
+  }
 }
 
+number_check(0)
 
 ```
 
@@ -61,47 +58,30 @@ check_number <- function(num){
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
-absolute_value <- function(num){
+absolute_value <- function(num) {
   if (num >= 0) {
     print(num)
-  }else {
+  } else {
     print(num * -1)
   }
 }
 
-absolute_value(10)
+absolute_value(17)
 ```
 
 5. Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string. 
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
-
-numerical_value <- function(num){
-  if(is.character(num)) {
+numerical_value <- function(x) {
+  if (is.character(x)) {
     print("Please pass a numerical value to this function")
-    return(NULL)
-  }
-  if (!is.numeric(num)){
-    print("Please pass a numerical value to this function")
-    return(NULL)
-  }
-  numerical_value <- function(num){
-  if(is.character(num)) {
-    print("Please pass a numerical value to this function")
-    return(NULL)
-  }
-    return(ifelse(num >= 0, num, -num))
-  }
+    }
 }
-  
+
 numerical_value("apple")
 
 ```
-   
-   
-
-
 
 
 
